@@ -128,11 +128,8 @@ def test_calculate_high_low_temperature(mock_make_request, station_response, tem
 
     mock_make_request.side_effect = [mock_response_station] + mock_temperature_responses
 
-    smhi_parser = SmhiParser()
-    smhi_parser.make_request = mock_make_request
-
     # Call the function to test
-    highest_place, highest_temp, lowest_place, lowest_temp = calculate_high_low_temperature(smhi_parser)
+    highest_place, highest_temp, lowest_place, lowest_temp = calculate_high_low_temperature()
 
     assert (highest_place, highest_temp, lowest_place, lowest_temp) == expected
 

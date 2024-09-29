@@ -16,11 +16,13 @@ class SmhiParser:
         r = requests.get(self.BASE_URL+path+self.suffix)
         return r
 
-def calculate_high_low_temperature(smhi_parser):
+def calculate_high_low_temperature():
     highest_temp = -1000
     lowest_temp = 1000
     highest_place = ""
     lowest_place = ""
+
+    smhi_parser = SmhiParser()
     path = "/parameter/2"
     response_station = smhi_parser.make_request(path=path)
 
@@ -62,8 +64,7 @@ def main():
             print(df_sorted.to_string(header=False, index=False))
 
     if args.temperatures:
-        smhi_parser = SmhiParser()
-        highest_place, highest_temp, lowest_place, lowest_temp = calculate_high_low_temperature(smhi_parser)
+        highest_place, highest_temp, lowest_place, lowest_temp = calculate_high_low_temperature()
         print(f"Highest temperature: {highest_place}, {highest_temp} degrees")
         print(f"Lowest temperature: {lowest_place}, {lowest_temp} degrees")
 
