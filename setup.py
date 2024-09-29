@@ -3,6 +3,7 @@ import setuptools
 REQUIRED_PACKAGES = [
     "pytest==6.2.5",
     "requests==2.26.0",
+    "pandas==2.2.3"
 ]
 
 setuptools.setup(
